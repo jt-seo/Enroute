@@ -7,6 +7,7 @@
 //
 
 import Combine
+import MapKit
 
 // a (shared) ViewModel that supplies info about all known airports
 // see also: Airlines
@@ -40,4 +41,13 @@ class Airports: ObservableObject
     }
 
     private init() { }
+}
+
+extension Airport: MKAnnotation {
+    public var coordinate: CLLocationCoordinate2D {
+        return CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+    }
+    
+    public var title: String? { name ?? icao }
+    public var subtitle: String? { location }
 }

@@ -28,6 +28,7 @@
 		1F21070425134EFB00E27B91 /* Airport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F21070325134EFB00E27B91 /* Airport.swift */; };
 		1F21070625134F0500E27B91 /* Airline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F21070525134F0500E27B91 /* Airline.swift */; };
 		1F21070825134F0E00E27B91 /* Flight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F21070725134F0E00E27B91 /* Flight.swift */; };
+		1FF273522535749C00C052BF /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF273512535749C00C052BF /* MapView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		1F21070325134EFB00E27B91 /* Airport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Airport.swift; sourceTree = "<group>"; };
 		1F21070525134F0500E27B91 /* Airline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Airline.swift; sourceTree = "<group>"; };
 		1F21070725134F0E00E27B91 /* Flight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flight.swift; sourceTree = "<group>"; };
+		1FF273512535749C00C052BF /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +94,7 @@
 				1F2106DE251336AA00E27B91 /* Airports.swift */,
 				1F2106E4251336C600E27B91 /* FlightFetcher.swift */,
 				1F2106E92513386B00E27B91 /* FilterFlights.swift */,
+				1FF273512535749C00C052BF /* MapView.swift */,
 				1F2106E5251336C600E27B91 /* FoundationExtensions.swift */,
 				1F2106ED251345DE00E27B91 /* FlightsEnrouteView.swift */,
 				1F2106C62513362B00E27B91 /* AppDelegate.swift */,
@@ -222,6 +225,7 @@
 				1F2107002513489600E27B91 /* FlightAwareRequest.swift in Sources */,
 				1F2106E0251336AA00E27B91 /* Airports.swift in Sources */,
 				1F2106EE251345DE00E27B91 /* FlightsEnrouteView.swift in Sources */,
+				1FF273522535749C00C052BF /* MapView.swift in Sources */,
 				1F2106FE2513489600E27B91 /* FlightAware+AirlineInfo.swift in Sources */,
 				1F2106EA2513386C00E27B91 /* FilterFlights.swift in Sources */,
 				1F2106E8251336C700E27B91 /* FoundationExtensions.swift in Sources */,

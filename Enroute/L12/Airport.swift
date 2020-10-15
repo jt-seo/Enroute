@@ -13,10 +13,7 @@ import Combine
 extension Airport {
     static func withICAO(_ icao: String, context: NSManagedObjectContext) -> Airport {
         // look up icao in Core Data
-        let request = NSFetchRequest<Airport>(entityName: "Airport")
-        request.predicate = NSPredicate(format: "icao = %@", icao)
-        request.sortDescriptors = [NSSortDescriptor(key: "location", ascending: true)]
-        
+        let request = Airport.fetchRequest(NSPredicate(format: "icao_ = %@", icao))
         let airports = (try? context.fetch(request)) ?? []
         
         if let airport = airports.first {
@@ -75,5 +72,36 @@ extension Airport: Comparable {
     
     public static func < (lhs: Airport, rhs: Airport) -> Bool {
         lhs.friendlyName < rhs.friendlyName
+    }
+}
+
+extension Airport {
+    static func fetchRequest(_ predicate: NSPredicate) -> NSFetchRequest<Airport> {
+        let request = NSFetchRequest<Airport>(entityName: "Airport")
+        request.predicate = predicate
+        request.sortDescriptors = [NSSortDescriptor(key: "location", ascending: true)]
+        return request
+    }
+}
+
+extension Airport {
+    private static var flightAwareRequest: EnrouteRequest!
+    private static var flightAwareRequestCancellable: AnyCancellable?
+    func fetchIncomingFlights() {
+        Self.flightAwareRequest?.stopFetching()
+        if let context = managedObjectContext {
+            Airport.flightAwareRequest = EnrouteRequest.create(airport: self.icao, howMany: 120)
+            Airport.flightAwareRequest?.fetch()
+            Self.flightAwareRequestCancellable = Airport.flightAwareRequest?.results.sink { faflights in
+                for faflight in faflights {
+                    Flight.update(from: faflight, in: context)
+                }
+                do {
+                    try context.save()
+                } catch {
+                    print("Couldn't save flight update to CoreData: \(error.localizedDescription)")
+                }
+            }
+        }
     }
 }
